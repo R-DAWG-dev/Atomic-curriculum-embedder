@@ -1,17 +1,21 @@
-# Atomic-curriculum-embedder
 # Atomic Curriculum Embedder
 
-Convert any textbook or curriculum into **tiny Q&A pairs**. An AI can retrieve answers instantly with **near‑zero token cost** – no LLM generation needed.
+Convert textbooks or FAQs into atomic Q&A pairs. Retrieve answers instantly with near‑zero token cost – no LLM generation.
 
-## Why?
-- Normal RAG: retrieves 500+ tokens + LLM generates 100+ tokens → ~600 tokens per query.
-- This method: exact cache hit = 0 tokens; vector search = ~30 tokens (embedding only).
+## Why
+- Standard RAG: ~600 tokens/query (retrieval + generation)
+- This embedder: 0 tokens (cache) or ~30 tokens (vector search)
+
+## When to use
+- Factual Q&A (math, science, definitions, code snippets)
+- FAQs, support docs
+- Any domain with short, unambiguous answers
 
 ## How it works
-1. You provide atomic Q&A pairs (question + short answer <20 tokens).
-2. The system embeds each question using `all-MiniLM-L6-v2`.
-3. At query time, it either hits an exact‑match cache or does a fast vector search.
-4. The short answer is returned directly – **no LLM call**.
+1. You provide `(question, short_answer)` pairs (answer ≤20 tokens).
+2. System embeds each question using `all-MiniLM-L6-v2`.
+3. At query time: exact cache hit → return answer; else vector search → return nearest match.
+4. No LLM call – answer is looked up directly.
 
 ## Installation
 ```bash
