@@ -1,0 +1,11 @@
+# Core database & embeddings
+chromadb>=0.5.0
+sentence-transformers>=3.0.0
+
+# API calls
+requests>=2.31.0
+
+# LLM providers — install only what you need
+google-generativeai>=0.8.0          # Gemini
+openai>=1.40.0                       # OpenAI GPT
+anthropic>=0.34.0                    # Claude
